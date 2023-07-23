@@ -23,6 +23,13 @@ class Api::MessagesController < ApplicationController
     private
   
     def message_params
-        params.require(:message).permit(:content, :sender, :receiver, :timestamp)
+        params.require(:message).permit(:content, :sender, :receiver, :timestamp, :session_id)
+    end
+
+    def messages_by_session
+        session_id = params[:session_id]
+        @messages = Message.where(session_id: session_id)
+  
+        render json: @messages
     end
 end

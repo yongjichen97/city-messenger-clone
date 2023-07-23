@@ -4,5 +4,6 @@ export interface Message {
     sender: string;
     receiver: string;
     timestamp: Date; 
+    session_id: string;
   }
   

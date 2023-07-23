@@ -13,12 +13,14 @@ export class MessageListComponent implements OnInit {
 
   ngOnInit() {
     this.loadMessages();
+    // this.loadMessagesBySessionId();
   }
 
   loadMessages() {
     this.messageService.getAllMessages().subscribe(
       (messages) => {
-        this.messages = messages;
+        let filterBySessionId = messages.filter(x => x.session_id == document.cookie);
+        this.messages = filterBySessionId;
         console.log("loading...")
         console.log(messages)
       },
@@ -27,4 +29,19 @@ export class MessageListComponent implements OnInit {
       }
     );
   }
+
+
+  loadMessagesBySessionId() {
+    const sessionId = document.cookie;
+    this.messageService.getMessagesBySessionId(sessionId).subscribe(
+      (messages) => {
+        this.messages = messages;
+      },
+      (error) => {
+        // Handle error
+      }
+    );
+  }
+
+
 }

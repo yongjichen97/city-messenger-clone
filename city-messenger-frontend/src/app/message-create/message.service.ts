@@ -18,7 +18,7 @@ export class MessageService {
 
   // Method to create a new message
   createMessage(message: any): Observable<any> {
-    const messageWithTimestamp: Message = { ...message, timestamp: new Date().toISOString() };
+    const messageWithTimestamp: Message = { ...message, timestamp: new Date().toISOString(), session_id: document.cookie };
     console.log("creating...")
     console.log(messageWithTimestamp)
     return this.http.post<Message>(this.apiUrl, messageWithTimestamp);
@@ -29,4 +29,9 @@ export class MessageService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<any>(url);
   }
+
+  getMessagesBySessionId(sessionId: string) {
+    return this.http.get<Message[]>(`${this.apiUrl}/by_session/${sessionId}`);
+  }
+
 }
