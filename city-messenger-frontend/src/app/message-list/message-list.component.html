@@ -1,0 +1,11 @@
+<h2>Messages</h2>
+<ul>
+  <li *ngFor="let message of messages">
+    <label>
+        <b>{{ message.receiver }}</b>
+        {{ message.timestamp }}
+        <label class="form-control" readonly>{{ message.content }}</label>
+      </label>
+      <br>
+  </li>
+</ul>

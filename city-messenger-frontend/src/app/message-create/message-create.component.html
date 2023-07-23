@@ -1,0 +1,16 @@
+<h2>Create New Message</h2>
+<form (ngSubmit)="createMessage()">
+  <label>
+    Phone Number:
+    <input class="form-control" type="text" [(ngModel)]="message.receiver" name="receiver" required>
+    <div class="invalid-feedback" data-sb-feedback="name:required">phone is required.</div>
+  </label>
+  <br>
+  <label>
+    Message:
+    <input class="form-control" type="text" [(ngModel)]="message.content" name="content" required>
+    <div class="invalid-feedback" data-sb-feedback="name:required">Message is required.</div>
+  </label>
+  <br>
+  <button type="submit">Submit</button>
+</form>

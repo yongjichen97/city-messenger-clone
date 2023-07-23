@@ -1,0 +1,16 @@
+h2 {
+    color: #0066cc;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
