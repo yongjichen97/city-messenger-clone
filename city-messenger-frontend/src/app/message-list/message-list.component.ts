@@ -23,7 +23,7 @@ export class MessageListComponent implements OnInit {
         let filterBySessionId = messages.filter(x => x.session_id == document.cookie);
         filterBySessionId.forEach(x => x.readable = new Date(x.timestamp).toLocaleString());
         console.log(filterBySessionId)
-        this.messages = filterBySessionId;
+        this.messages = filterBySessionId.reverse();
         console.log("loading filtered...")
         console.log(messages)
       },
@@ -37,7 +37,7 @@ export class MessageListComponent implements OnInit {
     this.messageService.getAllMessages().subscribe(
       (messages) => {
         messages.forEach(x => x.readable = new Date(x.timestamp).toLocaleString());
-        this.messages = messages;
+        this.messages = messages.reverse();
         console.log("loading all messages...")
         console.log(messages)
       },
