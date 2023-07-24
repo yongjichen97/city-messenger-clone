@@ -15,7 +15,7 @@ class Api::MessagesController < ApplicationController
         message_body = params[:content]
     
         account_sid = 'ACb87176420c5591820938f7ab8d87933c' # Replace with your Twilio Account SID
-        auth_token = '9c91e7190891c63c1eee4c753ac368f4'   # Replace with your Twilio Auth Token
+        auth_token = 'a836279982d69068bf9a481fec534c89'   # Replace with your Twilio Auth Token
     
         @client = Twilio::REST::Client.new(account_sid, auth_token)
     
