@@ -12,7 +12,7 @@ Written with ruby on rails as backend and angular for frontend.
 
 # Setup 
 1. bundle install
-2. rails db:create && db:migrate
+2. rails db:create && rails db:migrate
 2. rails server
 3. cd city-messenger-frontend
 4. npm install && npm install -g @angular/cli
