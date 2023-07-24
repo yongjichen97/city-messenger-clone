@@ -8,6 +8,7 @@ import { MessageService } from '../message-create/message.service';
 })
 export class MessageListComponent implements OnInit {
   messages: any[] = [];
+  sessionId: string = document.cookie;
 
   constructor(private messageService: MessageService) {}
 
@@ -43,5 +44,8 @@ export class MessageListComponent implements OnInit {
     );
   }
 
+  displaySessionId() {
+    return document.cookie;
+  }
 
 }
