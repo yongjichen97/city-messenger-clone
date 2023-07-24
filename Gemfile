@@ -36,6 +36,7 @@ end
 group :development do
 end
 gem 'rack-cors'
+gem 'twilio-ruby'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

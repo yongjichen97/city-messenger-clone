@@ -9,7 +9,7 @@ import { MessageService } from './message.service';
 export class MessageCreateComponent {
   message: any = {};
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService) { }
 
   createMessage() {
     this.message.timestamp = new Date().toISOString();
@@ -18,6 +18,7 @@ export class MessageCreateComponent {
         console.log('Message created:', response);
         this.message = {}; // Clear the form after successful creation
         this.reloadPage();
+
 
       },
       (error) => {

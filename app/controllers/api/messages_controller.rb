@@ -5,14 +5,39 @@ class Api::MessagesController < ApplicationController
     end
   
     def create
-      @message = Message.new(message_params)
-      @message.timestamp = Time.zone.now # Set the timestamp to the current time
-      if @message.save!
-        render json: @message, status: :created
-      else
-        render json: { error: @message.errors.full_messages.join(', ') }, status: :unprocessable_entity
+        @message = Message.new(message_params)
+        @message.timestamp = Time.zone.now # Set the timestamp to the current time
+    
+        # Replace 'YOUR_TWILIO_PHONE_NUMBER' with your Twilio phone number
+        from_number = '+18449690523'
+    
+        to_number = params[:receiver]
+        message_body = params[:content]
+    
+        account_sid = 'ACb87176420c5591820938f7ab8d87933c' # Replace with your Twilio Account SID
+        auth_token = '9c91e7190891c63c1eee4c753ac368f4'   # Replace with your Twilio Auth Token
+    
+        @client = Twilio::REST::Client.new(account_sid, auth_token)
+    
+        begin
+        # Use user-provided data for the Twilio message
+        message = @client.messages.create(
+            body: message_body,
+            from: from_number,
+            to: to_number
+        )
+    
+        # If the Twilio message is sent successfully, save the local message object
+        if @message.save
+            render json: @message, status: :created
+        else
+            render json: { error: @message.errors.full_messages.join(', ') }, status: :unprocessable_entity
+        end
+        rescue Twilio::REST::RestError => e
+        render json: { success: false, error: e.message }
+        end
     end
-    end
+    
   
     def destroy
       @message = Message.find(params[:id])
