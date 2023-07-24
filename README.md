@@ -23,3 +23,6 @@ Written with ruby on rails as backend and angular for frontend.
 2. Optional (Hit "Generate new session id")
 3. Enter in a valid phone number and message
 4. Hit submit... Enjoy...
+
+# Disclaimer
+1. Numbers need to be verified in order to be sent via the twilio console.
