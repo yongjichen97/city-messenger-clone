@@ -30,6 +30,11 @@ export class AppComponent {
     console.log("generate new id: " + myuuid);
 
     document.cookie = myuuid;
+    this.reloadPage(); 
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 
 }

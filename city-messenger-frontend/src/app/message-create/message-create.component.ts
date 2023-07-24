@@ -17,10 +17,19 @@ export class MessageCreateComponent {
       (response) => {
         console.log('Message created:', response);
         this.message = {}; // Clear the form after successful creation
+        this.reloadPage();
+
       },
       (error) => {
         console.error('Error creating message:', error);
       }
     );
   }
+
+
+  reloadPage() {
+    window.location.reload();
+  }
+
 }
+
