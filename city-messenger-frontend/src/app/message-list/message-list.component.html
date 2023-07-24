@@ -1,13 +1,20 @@
 <h2>Message History</h2>
+<button type="button" class="btn btn-warning" (click)="loadAllMessages()">Show all messages</button>
+<button type="button" class="btn btn-primary" (click)="loadMessages()">Show this sessions messages</button>
+
 <p>Session ID: {{ sessionId }}</p>
-<ul>
-  <li *ngFor="let message of messages">
-      <label>
-          <b>{{ message.receiver }}</b>
-          {{ message.readable }}
-          <span style="padding-left:50px">{{ message.content.length }}/250</span>
-          <label class="form-control" readonly>{{ message.content }}</label>
-      </label>
-      <br>
-  </li>
-</ul>
+<div class="overflow-auto">
+
+    <ul style="overflow:scroll;max-height: 300px;">
+        <li *ngFor="let message of messages">
+            <label>
+                <b>{{ message.receiver }}</b>
+                {{ message.readable }}
+                <span style="padding-left:50px">{{ message.content.length }}/250</span>
+                <label class="form-control" readonly>{{ message.content }}</label>
+            </label>
+            <br>
+        </li>
+    </ul>
+    
+</div>

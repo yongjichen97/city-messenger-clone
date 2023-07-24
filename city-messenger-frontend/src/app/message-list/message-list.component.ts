@@ -21,10 +21,24 @@ export class MessageListComponent implements OnInit {
     this.messageService.getAllMessages().subscribe(
       (messages) => {
         let filterBySessionId = messages.filter(x => x.session_id == document.cookie);
-        let addReadbleDate = filterBySessionId.forEach(x => x.readable = new Date(x.timestamp).toLocaleString());
+        filterBySessionId.forEach(x => x.readable = new Date(x.timestamp).toLocaleString());
         console.log(filterBySessionId)
         this.messages = filterBySessionId;
-        console.log("loading...")
+        console.log("loading filtered...")
+        console.log(messages)
+      },
+      (error) => {
+        console.error('Error fetching messages:', error);
+      }
+    );
+  }
+  
+  loadAllMessages() {
+    this.messageService.getAllMessages().subscribe(
+      (messages) => {
+        messages.forEach(x => x.readable = new Date(x.timestamp).toLocaleString());
+        this.messages = messages;
+        console.log("loading all messages...")
         console.log(messages)
       },
       (error) => {

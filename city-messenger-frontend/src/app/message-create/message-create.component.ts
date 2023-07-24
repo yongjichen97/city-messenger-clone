@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from './message.service';
+import { MessageListComponent } from '../message-list/message-list.component';
 
 @Component({
   selector: 'app-message-create',
