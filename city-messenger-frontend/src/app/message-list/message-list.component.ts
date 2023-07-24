@@ -21,6 +21,8 @@ export class MessageListComponent implements OnInit {
     this.messageService.getAllMessages().subscribe(
       (messages) => {
         let filterBySessionId = messages.filter(x => x.session_id == document.cookie);
+        let addReadbleDate = filterBySessionId.forEach(x => x.readable = new Date(x.timestamp).toLocaleString());
+        console.log(filterBySessionId)
         this.messages = filterBySessionId;
         console.log("loading...")
         console.log(messages)

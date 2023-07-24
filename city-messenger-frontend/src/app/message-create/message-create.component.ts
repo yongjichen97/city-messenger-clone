@@ -9,6 +9,8 @@ import { MessageService } from './message.service';
 export class MessageCreateComponent {
   message: any = {};
 
+  readableDate: string = "";
+
   constructor(private messageService: MessageService) { }
 
   createMessage() {

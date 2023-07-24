@@ -2,11 +2,11 @@
 <p>Session ID: {{ sessionId }}</p>
 <ul>
   <li *ngFor="let message of messages">
-    <label>
-        <b>{{ message.receiver }}</b>
-        {{ message.timestamp }}
-        <label class="form-control" readonly>{{ message.content }}</label>
-        <span>{{ message.content.length }}/250</span>
+      <label>
+          <b>{{ message.receiver }}</b>
+          {{ message.readable }}
+          <span style="padding-left:50px">{{ message.content.length }}/250</span>
+          <label class="form-control" readonly>{{ message.content }}</label>
       </label>
       <br>
   </li>
