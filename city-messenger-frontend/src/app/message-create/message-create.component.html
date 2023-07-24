@@ -1,16 +1,30 @@
+<script>
+    var text_max = 200;
+    $('#count_message').html('0 / ' + text_max);
+
+    $('#text').keyup(function () {
+        var text_length = $('#text').val().length;
+        var text_remaining = text_max - text_length;
+
+        $('#count_message').html(text_length + ' / ' + text_max);
+    });
+</script>
 <h2>New Message</h2>
 <form (ngSubmit)="createMessage()">
-  <label>
-    Phone Number:
-    <input class="form-control" type="text" [(ngModel)]="message.receiver" name="receiver" required>
-    <div class="invalid-feedback" data-sb-feedback="name:required">phone is required.</div>
-  </label>
-  <br>
-  <label>
-    Message:
-    <input class="form-control" type="text" [(ngModel)]="message.content" name="content" required>
-    <div class="invalid-feedback" data-sb-feedback="name:required">Message is required.</div>
-  </label>
-  <br>
-  <button type="button" class="btn btn-dark" type=""submit>Submit</button>
+    <label>
+        Phone Number:
+        <input class="form-control" type="text" [(ngModel)]="message.receiver" name="receiver" required>
+        <div class="invalid-feedback" data-sb-feedback="name:required">phone is required.</div>
+    </label>
+    <br>
+    <label>
+        Message:
+        <textarea class="form-control" #myInput [(ngModel)]="message.content" name="content" required maxlength="250"
+            rows="3"></textarea>
+        <span class="nopadding clrlbl">
+            {{myInput.value.length}} /250</span>
+        <div class="invalid-feedback" data-sb-feedback="name:required">Message is required.</div>
+    </label>
+    <br>
+    <button type="button" class="btn btn-dark" type="" submit>Submit</button>
 </form>
